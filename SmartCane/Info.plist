@@ -4,5 +4,7 @@
 <dict>
 	<key>SKAppKey</key>
 	<string>$(SKAppKey)</string>
+	<key>OpenAIAPIKey</key>
+	<string>$(OpenAIAPIKey)</string>
 </dict>
 </plist>
