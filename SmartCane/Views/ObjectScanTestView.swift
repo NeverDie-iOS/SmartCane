@@ -26,7 +26,7 @@ struct ObjectScanTestView: View {
                     Text("사진 촬영하기")
                 }
                 
-                PhotosPicker("앨범에서 선택", selection: $selectedItem)
+                PhotosPicker("앨범에서 선택", selection: $selectedItem, matching: .images)
             }
         }
         .onChange(of: selectedItem) { newItem in
