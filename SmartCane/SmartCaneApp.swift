@@ -4,7 +4,7 @@ import SwiftUI
 struct SmartCaneApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            ObjectScanTestView()
         }
     }
 }
