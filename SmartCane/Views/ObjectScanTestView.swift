@@ -2,12 +2,12 @@ import SwiftUI
 import PhotosUI
 
 struct ObjectScanTestView: View {
-    @State private var presentImage: Image?
+    @State private var presentImage: Image? // 화면에 표시할 이미지
     @State private var selectedItem: PhotosPickerItem?
-    @State private var selectedItemData: Data?
+    @State private var selectedItemData: Data? // JPEG Data
     
-    @State private var showCamera = false
-    @State private var cameraImage: UIImage?
+    @State private var showCamera = false // 카메라 시트 On/Off
+    @State private var cameraImage: UIImage? // 카메라로 촬영한 이미지
     
     var body: some View {
         VStack {
@@ -30,6 +30,17 @@ struct ObjectScanTestView: View {
                 
                 PhotosPicker("앨범에서 선택", selection: $selectedItem, matching: .images)
             }
+            
+            Button {
+                if let selectedItemData {
+                    let base64IncodedString: String = selectedItemData.base64EncodedString()
+                } else {
+                    print("선택된 사진의 데이터가 없습니다.")
+                }
+            } label: {
+                Text("Chat gpt 요청")
+            }
+            .padding()
         }
         .fullScreenCover(isPresented: $showCamera) {
             ImagePicker(cameraImage: $cameraImage)
@@ -38,16 +49,16 @@ struct ObjectScanTestView: View {
         .onChange(of: selectedItem) { newItem in
             Task {
                 if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                    selectedItemData = data
-                    
                     if let uiImage = UIImage(data: data) {
                         presentImage = Image(uiImage: uiImage)
+                        selectedItemData = uiImage.jpegData(compressionQuality: 0.8)
                     }
                 }
             }
         }
         .onChange(of: cameraImage) { newImage in
             guard let newImage else { return }
+            selectedItemData = newImage.jpegData(compressionQuality: 0.8)
             self.presentImage = Image(uiImage: newImage)
         }
     }
