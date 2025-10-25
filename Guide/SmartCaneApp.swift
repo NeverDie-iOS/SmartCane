@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct SmartCaneApp: App {
+struct GuideApp: App {
     var body: some Scene {
         WindowGroup {
             ObjectScanTestView()
