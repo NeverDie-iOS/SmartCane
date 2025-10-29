@@ -4,6 +4,8 @@
 <dict>
 	<key>GeminiAPIKey</key>
 	<string>$(GeminiAPIKey)</string>
+	<key>Prompt</key>
+	<string>$(Prompt)</string>
 	<key>SKAppKey</key>
 	<string>$(SKAppKey)</string>
 </dict>
