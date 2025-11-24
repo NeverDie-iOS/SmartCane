@@ -8,5 +8,16 @@
 	<string>$(Prompt)</string>
 	<key>SKAppKey</key>
 	<string>$(SKAppKey)</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>지팡이와 연결하여 사진을 전송받기 위해 로컬 네트워크 권한이 필요합니다.</string>
+    <key>NSBonjourServices</key>
+    <array>
+        <string>_http._tcp</string>
+    </array>
 </dict>
 </plist>
